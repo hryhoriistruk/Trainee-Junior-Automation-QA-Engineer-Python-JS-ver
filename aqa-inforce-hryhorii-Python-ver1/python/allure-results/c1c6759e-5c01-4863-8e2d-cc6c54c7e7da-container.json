@@ -1,0 +1,1 @@
+{"uuid": "bd231b19-430f-44b6-9812-ac179daafe2a", "children": ["c192a3df-492b-46d9-a65e-8a5e323b77c6"], "befores": [{"name": "room", "status": "passed", "start": 1790670860237, "stop": 1790670860674}], "afters": [{"name": "room::0", "status": "passed", "start": 1790670860797, "stop": 1790670861016}], "start": 1790670860237, "stop": 1790670861016}

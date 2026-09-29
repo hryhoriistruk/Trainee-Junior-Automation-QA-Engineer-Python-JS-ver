@@ -1,0 +1,24 @@
+{
+  "name": "aqa-inforce-hryhoriistruk",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Cypress UI + API tests for https://automationintesting.online/ (room booking)",
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run",
+    "test:ui": "cypress run --spec cypress/e2e/user-spec.cy.js",
+    "test:api": "cypress run --spec cypress/e2e/admin-spec.cy.js",
+    "test:report": "cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports,overwrite=false,html=true,json=false",
+    "lint": "eslint cypress cypress.config.js",
+    "lint:fix": "eslint cypress cypress.config.js --fix",
+    "format": "prettier --write cypress cypress.config.js",
+    "format:check": "prettier --check cypress cypress.config.js"
+  },
+  "devDependencies": {
+    "cypress": "^13.17.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "mochawesome": "^7.1.3",
+    "prettier": "^3.2.5"
+  }
+}

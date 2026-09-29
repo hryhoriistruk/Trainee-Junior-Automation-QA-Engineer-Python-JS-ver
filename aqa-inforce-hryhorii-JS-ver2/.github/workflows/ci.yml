@@ -1,0 +1,53 @@
+name: Cypress CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        browser: [chrome, firefox]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Run format check
+        run: npm run format:check
+
+      - name: Run Cypress tests
+        run: npx cypress run --browser ${{ matrix.browser }} --reporter mochawesome --reporter-options reportDir=cypress/reports,overwrite=false,html=true,json=false
+        env:
+          CYPRESS_BASE_URL: https://automationintesting.online
+
+      - name: Upload screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-${{ matrix.browser }}
+          path: cypress/screenshots
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report-${{ matrix.browser }}
+          path: cypress/reports
