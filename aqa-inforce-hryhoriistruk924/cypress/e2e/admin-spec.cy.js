@@ -54,7 +54,6 @@ describe('API – Admin & User flows for rooms', () => {
         expect(bookings[0].bookingdates.checkout).to.eq(dates.checkout);
       });
 
-
       cy.userGetRoomReport(room.roomid).then((report) => {
         expect(report).to.have.length(1);
         expect(report[0]).to.include({
@@ -132,7 +131,7 @@ describe('API – Admin & User flows for rooms', () => {
         expect(AUTH_ERRORS).to.include(res.status);
       });
 
-
+      
       cy.userGetRooms().then((rooms) => {
         const found = rooms.find((r) => r.roomid === room.roomid);
         expect(found, 'room still exists').to.exist;
@@ -151,13 +150,9 @@ describe('API – Admin & User flows for rooms', () => {
         { overrides: { firstname: 'Jo' }, status: [400] },
         { overrides: { lastname: '' }, status: [400] },
         { overrides: { phone: '123' }, status: [400] },
-        // no dates: the live site answers 500 after a long delay (OBS-06),
-        // so this single case needs a much larger timeout than the rest.
         { overrides: { bookingdates: undefined }, status: [400, 409, 500] },
       ];
 
-      // cy.wrap().each() keeps the requests sequential and awaited; plain
-      // Array.prototype.forEach would fire them all at once without waiting.
       cy.wrap(invalid).each(({ overrides, status }) => {
         const body = buildBooking(bookingBase, room.roomid, dates, overrides);
         cy.userBookRoom(body, { timeout: 90000 }).then((res) => {
@@ -210,7 +205,6 @@ describe('API – Admin & User flows for rooms', () => {
   });
 });
 
-// The UI reacts on the very same API that is tested above.
 describe('UI ↔ API consistency (cy.intercept)', () => {
   let room;
 
