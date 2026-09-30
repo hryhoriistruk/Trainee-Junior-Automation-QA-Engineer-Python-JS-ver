@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0 -- /Users/admin/IdeaProjects/aqa-inforce-hryhoriistruk-/aqa-inforce-hryhoriistruk9/python/.venv/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.9.6', 'Platform': 'macOS-26.5-arm64-arm-64bit', 'Packages': {'pytest': '8.4.2', 'pluggy': '1.6.0'}, 'Plugins': {'cov': '7.1.0', 'xdist': '3.8.0', 'metadata': '3.1.1', 'html': '4.2.0', 'allure-pytest': '2.16.2', 'rerunfailures': '16.0.1', 'base-url': '2.1.0', 'playwright': '0.7.1'}, 'JAVA_HOME': '/opt/homebrew/opt/java/libexec/openjdk.jdk/Contents/Home', 'Base URL': ''}
+rootdir: /Users/admin/IdeaProjects/aqa-inforce-hryhoriistruk-/aqa-inforce-hryhoriistruk9/python
+configfile: pytest.ini
+testpaths: tests
+plugins: cov-7.1.0, xdist-3.8.0, metadata-3.1.1, html-4.2.0, allure-pytest-2.16.2, rerunfailures-16.0.1, base-url-2.1.0, playwright-0.7.1
+collecting ... collected 24 items
+
+tests/test_api_rooms.py::test_create_room_admin_visible_for_user PASSED  [  4%]
+tests/test_api_rooms.py::test_book_room_user_visible_for_admin PASSED    [  8%]
+tests/test_api_rooms.py::test_edit_room_admin_visible_for_user PASSED    [ 12%]
+tests/test_api_rooms.py::test_delete_room_admin_removed_for_user PASSED  [ 16%]
+tests/test_api_rooms.py::test_room_create_edit_delete_without_auth_is_rejected PASSED [ 20%]
+tests/test_api_rooms.py::test_booking_with_invalid_data_is_rejected[invalid-email] PASSED [ 25%]
+tests/test_api_rooms.py::test_booking_with_invalid_data_is_rejected[firstname-too-short] PASSED [ 29%]
+tests/test_api_rooms.py::test_booking_with_invalid_data_is_rejected[lastname-empty] PASSED [ 33%]
+tests/test_api_rooms.py::test_booking_with_invalid_data_is_rejected[phone-too-short] PASSED [ 37%]
+tests/test_api_rooms.py::test_booking_with_invalid_data_is_rejected[no-dates] PASSED [ 41%]
+tests/test_api_rooms.py::test_home_page_loads_rooms_from_api PASSED      [ 45%]
+tests/test_api_rooms.py::test_same_dates_cannot_be_booked_twice PASSED   [ 50%]
+tests/test_api_rooms.py::test_wrong_credentials_and_anonymous_access_are_rejected PASSED [ 54%]
+tests/test_ui_booking.py::test_room_can_be_booked_with_valid_data[chromium] PASSED [ 58%]
+tests/test_ui_booking.py::test_room_cannot_be_booked_with_invalid_data[chromium-TC-UI-02-all-empty] PASSED [ 62%]
+tests/test_ui_booking.py::test_room_cannot_be_booked_without_dates[chromium] PASSED [ 66%]
+tests/test_ui_booking.py::test_calendar_feed_reports_earlier_booked_dates_as_unavailable[chromium] PASSED [ 70%]
+tests/test_ui_booking.py::test_calendar_shows_earlier_booked_dates_as_unavailable[chromium] XFAIL [ 75%]
+tests/test_ui_booking.py::test_earlier_booked_dates_cannot_be_booked_again[chromium] PASSED [ 79%]
+tests/test_ui_booking.py::test_book_now_on_home_page_opens_reservation_with_dates[chromium] PASSED [ 83%]
+tests/test_ui_booking.py::test_room_cannot_be_booked_with_invalid_data[chromium-TC-UI-03-firstname-too-short] PASSED [ 87%]
+tests/test_ui_booking.py::test_room_cannot_be_booked_with_invalid_data[chromium-TC-UI-04-invalid-email] PASSED [ 91%]
+tests/test_ui_booking.py::test_room_cannot_be_booked_with_invalid_data[chromium-TC-UI-05-phone-too-short] PASSED [ 95%]
+tests/test_ui_booking.py::test_room_cannot_be_booked_with_invalid_data[chromium-TC-UI-06-lastname-empty] PASSED [100%]
+
+=================== 23 passed, 1 xfailed in 72.75s (0:01:12) ===================
